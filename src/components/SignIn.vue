@@ -10,18 +10,20 @@
         <p class="header-subtitle">Start organizing your tasks!</p>
       </div>
 
-      <form class="form-sign-in">
+      <p v-show="errorMsg" class="error-msg"> {{ errorMsg }} </p>
+
+      <form @submit.prevent="signIn" class="form-sign-in">
         <div class="form">
           <div class="form-logo"></div>
           <div class="form-input">
             <label class="input-field-label">E-mail</label>
-            <input type="email" class="input-field" placeholder="example@gmail.com" id="email" :v-model="email">
+            <input type="email" class="input-field" placeholder="example@gmail.com" id="email" v-model="email" required>
           </div>
           <div class="form-input">
             <label class="input-field-label">Password</label>
-            <input type="password" class="input-field" placeholder="" id="password" :v-model="password">
+            <input type="password" class="input-field" placeholder="" id="password" v-model="password" required>
           </div>
-          <button class="button" @submit.prevent="signIn">Sign In</button>
+          <button class="button">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
         </div>
       </form>
@@ -165,6 +167,10 @@ a{
 /* damos el color al hover de los enlaces */
 .sign-up-link:hover {
   color: #195ABD;
+}
+
+.error-msg{
+  color: red;
 }
 
 </style>

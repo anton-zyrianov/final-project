@@ -22,7 +22,8 @@
               class="input-field"
               placeholder="example@gmail.com"
               id="email"
-              :v-model="email"
+              v-model="email"
+              required
             />
           </div>
           <div class="form-input">
@@ -32,7 +33,8 @@
               class="input-field"
               placeholder="**********"
               id="password"
-              :v-model="password"
+              v-model="password"
+              required
             />
           </div>
           <div class="form-input">
@@ -42,7 +44,8 @@
               class="input-field"
               placeholder="**********"
               id="confirmPassword"
-              :v-model="confirmPassword"
+              v-model="confirmPassword"
+              required
             />
           </div>
           <button class="button" type="submit">Sign Up</button>
@@ -56,6 +59,8 @@
           </p>
         </div>
       </form>
+
+      <div v-show="errorMsg">{{errorMsg}}</div>
     </div>
 
     <div class="image-side">
