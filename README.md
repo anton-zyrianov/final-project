@@ -67,3 +67,9 @@ Common
 Lil Supa
 ```
 [Hip Hop Spotify Playlist](https://open.spotify.com/playlist/4vKftyhS1gQovakehVcq1u?si=a7a119382dfe40da)
+
+18 agosto:
+- implentar HTML y CSS del sign-up y sing-in
+
+19 agosto:
+- implentar la logica para sign-up y sign-in

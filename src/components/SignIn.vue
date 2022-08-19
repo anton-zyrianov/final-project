@@ -15,13 +15,13 @@
           <div class="form-logo"></div>
           <div class="form-input">
             <label class="input-field-label">E-mail</label>
-            <input type="e-mail" class="input-field" placeholder="example@gmail.com" id="email" :v-model="email">
+            <input type="email" class="input-field" placeholder="example@gmail.com" id="email" :v-model="email">
           </div>
           <div class="form-input">
             <label class="input-field-label">Password</label>
-            <input type="e-mail" class="input-field" placeholder="example@gmail.com" id="email" :v-model="password">
+            <input type="password" class="input-field" placeholder="" id="password" :v-model="password">
           </div>
-          <button type="submit" class="button">Sign In</button>
+          <button class="button" @submit.prevent="signIn">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
         </div>
       </form>
