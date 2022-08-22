@@ -21,7 +21,7 @@
           </div>
           <div class="form-input">
             <label class="input-field-label">Password</label>
-            <input type="password" class="input-field" placeholder="" id="password" v-model="password" required>
+            <input type="password" class="input-field" placeholder="**********" id="password" v-model="password" required>
           </div>
           <button class="button">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
@@ -156,6 +156,7 @@ const signIn = async () => {
 .button{
   padding: 10px 40px;
   width: 100%;
+  border-radius: 5px;
 }
 
 a{
