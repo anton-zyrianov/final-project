@@ -72,4 +72,16 @@ Lil Supa
 - implentar HTML y CSS del sign-up y sing-in
 
 19 agosto:
-- implentar la logica para sign-up y sign-in
+- implentar la logica para sign-up, sign-in y sing out
+- implentar el navbar y el footer
+- empezar con el diseño HTML y CSS de addTask
+
+22 de agosto:
+- implementar la funcionalidad de addTask y TaskItem
+- añadir el diseño HTML y CSS de TaskItem
+- hacer el fetch de las task de supabase
+- !falta por arreglar que las task aparezcan sin actualizar la pagina
+
+23 de agosto:
+- preparar las tienda task para poder conectar los botones con la base de datos
+- añadir funcionalidad a los botones toggle - change name - delete de cada tarea

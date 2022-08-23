@@ -2,9 +2,16 @@
   <Nav />
 
   <div class="background-body">
-    <NewTask @add-task="setNewTask"/>
+    <!-- <NewTask 
+    @add-task="setNewTask"
+    :tasks="addNewTask.tasks" /> -->
+    <NewTask 
+    @add-task="setNewTask"/>
     <!-- <NewTask /> -->
-    <TaskItem />
+    <TaskItem :tasks="addNewTask.tasks"
+    @toggle-reminder="toggleReminder" 
+    @delete-task="deleteTaskArr"/>
+    
   </div>
   
   <Footer />
@@ -17,12 +24,35 @@ import NewTask from '../components/NewTask.vue'
 import { ref } from 'vue'
 import { useTaskStore } from "../stores/task"
 import TaskItem from '../components/TaskItem.vue'
+// import { created } from 'vue'
 
 const addNewTask = useTaskStore();
 
-function setNewTask(task){
-  addNewTask.addTask(task.name, task.description);
+// onMounted(() => addNewTask.fetchTasks());
+// async created(){
+//   addNewTask.tasks = await addNewTask.fetchTasks();
+// };
+
+addNewTask.fetchTasks();
+
+// console.log(addNewTask.tasks)
+
+async function setNewTask(task){
+  await addNewTask.addTask(task.name, task.description);
 };
+
+async function toggleReminder(task){
+  // addNewTask.tasks = addNewTask.tasks.map((task) => 
+  // task.user_id === id ? {...task, is_complete: !task.is_complete} : task
+  // );
+  // await addNewTask.toggleTask();
+  console.log(task);
+
+}
+
+async function deleteTaskArr(task){
+  // await addNewTask.deleteTask();
+}
 
 </script>
 

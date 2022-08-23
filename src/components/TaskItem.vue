@@ -1,20 +1,31 @@
 <template>
   <div class="container">
 
-    <div class="todo-item">
+    <div class="todo-item" v-for="task in tasks" :key="task.user_id">
       <div class="todo-image">
+        <i class="task fas fa-tasks fa-lg"></i>
       </div>
-      <div class="todo-container">
-        <div class="todo-title">Title</div>
 
-        <div class="todo-description">Description</div>
+      <div class="todo-container">
+        <div class="todo-title">
+          <h3>{{ task.title }}</h3>
+        </div>
+
+        <div class="todo-description">
+          <p>{{ task.description }}</p>
+        </div>
 
         <div class="todo-buttons">
-          <div class="todo-change-state"></div>
+          <!-- <div :class="addNewTask.is_complete ? 'todo-change-state' : 'todo-change-state-not'" @click="emit('toggle-reminder', getTask.user_id)"></div> -->
+          <div :class="task.is_complete ? 'todo-change-state' : 'todo-change-state-not'" @click="toggleReminderTask(task.user_id)"></div>
 
-          <div class="todo-change-name"></div>
+          <div class="todo-change-name">
+            <i class="change fas fa-edit fa-lg"></i>
+          </div>
 
-          <div class="todo-delete"></div>
+          <div class="todo-delete">
+            <i class="change fas fa-ban fa-lg" @click="deleteTask(task.user_id)"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -23,18 +34,42 @@
 </template>
 
 <script setup>
+import { useTaskStore } from '../stores/task'
+import { ref } from 'vue'
 
-// const emit = defineEmits([
-//   ENTER-EMITS-HERE
-// ])
+// const getTask = useTaskStore();
 
-// const props = defineProps(["ENTER-PROP-HERE"]);
+// getTask.fetchTasks();
+
+const emit = defineEmits(['toggle-reminder', 'delete-task']);
+
+const props = defineProps({
+  tasks: Array,
+});
+
+const toggleReminderTask = (id) => {
+  
+  tasks = tasks.map((task) => 
+  task.user_id === id ? {...task, is_complete: !task.is_complete} : task
+  );
+
+  emit('toggle-reminder', tasks);
+  console.log(tasks);
+};
+
+const deleteTask = (id) => {
+
+  tasks = tasks.filter((task) => task.user_id !== id)
+
+  emit('delete-task', tasks);
+
+};
+
 </script>
 
 <style scoped>
 
 .todo-item{
-  background-color: blue;
   margin-top: 40px;
   height: 100%;
   position: relative;
@@ -46,33 +81,44 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #44A8EE;
   left: 50%;
   top: -15%;
   transform: translate(-50%, 0);
+  border: 7px solid #fff;
 }
 
 .todo-container{
   padding: 30px;
-  text-align: center;
+  background-color: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 40px;
+  color: #303134;
 }
 
 .todo-change-state{
-  width: 30px;
-  height: 30px;
-  background-color: black;
+  width: 40px;
+  height: 40px;
+  background-color: #8fbc91;
+}
+
+.todo-change-state-not{
+  width: 40px;
+  height: 40px;
+  background-color: #fe2e2e;
 }
 
 .todo-change-name{
-  width: 30px;
-  height: 30px;
-  background-color: green;
+  width: 40px;
+  height: 40px;
+  background-color: #64babe;
 }
 
 .todo-delete{
-  width: 30px;
-  height: 30px;
-  background-color: white;
+  width: 40px;
+  height: 40px;
+  background-color: #fdafab;
 }
 
 .todo-buttons{
@@ -94,6 +140,40 @@
   margin: auto;
     display: flex;
   flex-wrap: wrap;
+}
+
+.task{
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-change-state,
+.todo-change-state-not,
+.todo-change-name,
+.todo-delete{
+  position: relative;
+  border-radius: 6px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.todo-change-state:hover,
+.todo-change-state-not:hover,
+.todo-change-name:hover,
+.todo-delete:hover{
+  opacity: 1;
+}
+
+
+.change{
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 </style>

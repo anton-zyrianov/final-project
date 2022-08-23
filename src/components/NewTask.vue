@@ -70,7 +70,7 @@ const errorFunction = () => {
       description: description.value,
     };
 
-    console.log(newTask);
+    // console.log(newTask);
 
     emit("add-task", newTask);
     name.value = '';
