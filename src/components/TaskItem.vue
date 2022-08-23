@@ -39,7 +39,7 @@
             </div> -->
 
             <!-- <button @click.prevent="errorFunction" class="button">Add</button> -->
-            <button @click="changeName" class="button">Change</button>
+            <button @click="changeNameTask(task.id, index)" class="button">Change</button>
           </div>
         </div>
 
@@ -52,7 +52,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const emit = defineEmits(['toggle-reminder', 'delete-task']);
+const emit = defineEmits(['toggle-reminder', 'delete-task', 'change-name']);
 
 const props = defineProps({
   tasks: Array,
@@ -92,11 +92,15 @@ const changeNameActiveValue = () => {
   changeNameActive.value = !changeNameActive.value;
 };
 
-const changeName = (id, index) => {
+const changeNameTask = (id, index) => {
 
+  const taskToEdit = props.tasks.map((task) => 
+  task.id === id ? {...task, title: name.value} : task
+  );
+
+  emit('change-name', taskToEdit[index]);
+  name.value = "";
 };
-
-
 
 </script>
 
@@ -247,6 +251,14 @@ input[type="text" i]{
   color: rgba(255, 255, 255, 1) !important;
   box-shadow: 0 2px 8px rgba(49, 138, 172, 1);
   transition: all 0.2s ease;
+}
+
+@media only screen and (max-width: 747px){
+  .container{
+    margin-left: 30px;
+    margin-right: 30px;
+
+  }
 }
 
 </style>

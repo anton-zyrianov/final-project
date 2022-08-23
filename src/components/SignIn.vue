@@ -6,8 +6,10 @@
         <a href="/auth/#" class="header-logo">
           <img src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="Logo-ToDo-App">
         </a>
-        <h3 class="header-title">Log In to ToDo App</h3>
-        <p class="header-subtitle">Start organizing your tasks!</p>
+        <div class="header-description">
+          <h3 class="header-title">Log In to ToDo App</h3>
+          <p class="header-subtitle">Start organizing your tasks!</p>
+        </div>
       </div>
 
       <p v-show="errorMsg" class="error-msg"> {{ errorMsg }} </p>
@@ -102,6 +104,10 @@ const signIn = async () => {
   height: 100vh;
 }
 
+.form-input{
+  position: relative;
+}
+
 .form-side{
   margin: auto;
   max-width: 747px;
@@ -182,9 +188,60 @@ a{
 .fas{
   color: #303134;
   position: absolute;
-  left: 30.5%;
-  bottom: 31%;
+  left: 90%;
+  bottom: 30%;
   opacity: 0.6;
+  transform: translate(-50%, -50%);
+
+}
+
+@media only screen and (max-width: 747px){
+  .container{
+    display: flex;
+    align-items: flex-end;
+    background-image: url('https://tecnicasdeaprendizaje.net/wp-content/uploads/2020/03/debe-tomar-notas-escribiendo-o-escribiendo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0% 0%;
+    height: 100vh;
+  }
+
+  .image-side{
+    display: none;
+  }
+
+  .form-side{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 90px 90px 0 0;
+  }
+
+  .form-sign-in{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form-side{
+    margin: 0 auto;
+  }
+
+  .header{
+    display: flex; 
+    justify-content: center;
+  }
+
+  .header-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .fas{
+    display: none;
+  }
 
 }
 

@@ -86,3 +86,4 @@ Lil Supa
 - preparar las tienda task para poder conectar los botones con la base de datos
 - añadir funcionalidad a los botones toggle - change name - delete de cada tarea
 - implemntado la funcionalidad de ocultar/mostrar contraseña en el sign in
+- comenzar con las media queries

@@ -62,6 +62,10 @@ const signOut = async () => {
 
 <style scoped>
 
+nav{
+  max-width: 1100px;
+}
+
 .nav-bar{
   display: flex;
   flex-direction: row;

@@ -2,15 +2,13 @@
   <Nav />
 
   <div class="background-body">
-    <!-- <NewTask 
-    @add-task="setNewTask"
-    :tasks="addNewTask.tasks" /> -->
     <NewTask 
     @add-task="setNewTask"/>
     <!-- <NewTask /> -->
     <TaskItem :tasks="addNewTask.tasks"
     @toggle-reminder="toggleReminder" 
-    @delete-task="deleteTaskArr"/>
+    @delete-task="deleteTaskArr"
+    @change-name="changeName" />
     
   </div>
   
@@ -49,10 +47,15 @@ async function toggleReminder(task){
   await addNewTask.toggleTask(task.is_complete, task.id);
   addNewTask.fetchTasks();
 
-}
+};
 
 async function deleteTaskArr(task){
   await addNewTask.deleteTask(task.id);
+  addNewTask.fetchTasks();
+};
+
+async function changeName(task){
+  await addNewTask.editTask(task.title, task.id);
   addNewTask.fetchTasks();
 }
 

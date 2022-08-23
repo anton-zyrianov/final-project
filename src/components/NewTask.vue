@@ -124,9 +124,10 @@ const errorFunction = () => {
   border-radius: 5px;
 }
 
-/* .add-task-form{
-  padding: 0 100px;
-} */
+.add-task-form{
+  margin-left: 30px;
+  margin-right: 30px;
+}
 
 .button{
   font-family: 'Barlow', sans-serif;

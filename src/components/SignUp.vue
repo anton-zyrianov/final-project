@@ -8,8 +8,10 @@
             alt="Logo-ToDo-App"
           />
         </a>
-        <h3 class="header-title">Register to ToDo App</h3>
-        <p class="header-subtitle">Start organizing your tasks!</p>
+        <div class="header-description">
+          <h3 class="header-title">Register to ToDo App</h3>
+          <p class="header-subtitle">Start organizing your tasks!</p>
+        </div>
       </div>
 
       <form @submit.prevent="signUp" class="form-sign-in">
@@ -200,6 +202,7 @@ const signUp = async () => {
 .button {
   padding: 10px 40px;
   width: 100%;
+  border-radius: 5px;
 }
 
 a {
@@ -212,4 +215,51 @@ a {
 .sign-up-link:hover {
   color: #195abd;
 }
+
+@media only screen and (max-width: 747px){
+  .container{
+    display: flex;
+    align-items: flex-end;
+    background-image: url('https://tecnicasdeaprendizaje.net/wp-content/uploads/2020/03/debe-tomar-notas-escribiendo-o-escribiendo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0% 0%;
+    height: 100vh;
+  }
+
+  .image-side{
+    display: none;
+  }
+
+  .form-side{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 90px 90px 0 0;
+  }
+
+  .form-sign-in{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form-side{
+    margin: 0 auto;
+  }
+
+  .header{
+    display: flex; 
+    justify-content: center;
+  }
+
+  .header-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
 </style>
