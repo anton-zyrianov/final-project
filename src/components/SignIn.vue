@@ -21,7 +21,8 @@
           </div>
           <div class="form-input">
             <label class="input-field-label">Password</label>
-            <input type="password" class="input-field" placeholder="**********" id="password" v-model="password" required>
+            <input :type="passwordFieldType" class="input-field" placeholder="**********" id="password" v-model="password" required>
+            <i class="fas fa-eye-slash fa-sm" @click="changePasswordFieldValue"></i>
           </div>
           <button class="button">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
@@ -61,6 +62,10 @@ const passwordFieldType = computed(() =>
   hidePassword.value ? "password" : "text"
 );
 const hidePassword = ref(true);
+
+const changePasswordFieldValue = () => {
+  hidePassword.value = !hidePassword.value;
+};
 
 // Router to push user once SignedIn to the HomeView
 const redirect = useRouter();
@@ -172,6 +177,15 @@ a{
 
 .error-msg{
   color: red;
+}
+
+.fas{
+  color: #303134;
+  position: absolute;
+  left: 30.5%;
+  bottom: 31%;
+  opacity: 0.6;
+
 }
 
 </style>

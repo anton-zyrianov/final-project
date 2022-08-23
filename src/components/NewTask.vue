@@ -6,7 +6,7 @@
 
     <div class="add-task-description">
       <p class="add-task-text">Keep your life organized, prepare for a trip ? Start here</p>
-      <p class="add-task-text">Today's Date is DATE</p>
+      <p class="add-task-text">Today's Date is {{ date }}</p>
     </div>
 
 
@@ -24,7 +24,7 @@
       </div>
 
       <!-- <button @click.prevent="errorFunction" class="button">Add</button> -->
-      <button @click.prevent="errorFunction" class="button">Add</button>
+      <button @click="errorFunction" class="button">Add</button>
     </div>
 
   </div>
@@ -33,6 +33,11 @@
 <script setup>
 import { ref } from "vue";
 import { useTaskStore } from "../stores/task" 
+//importamos libreria moment.js que previamente habiamos instalado con npm install moment --save
+import moment from 'moment'
+
+//guardamos en un varibale la funcion predeterminada por moment y lo mostramos en el html con el sintaxis bigotes
+const date = moment().format('ll');;   
 
 // constant to save a variable that define the custom event that will be emitted to the homeView
 const setTask = useTaskStore();

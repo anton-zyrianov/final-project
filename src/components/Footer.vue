@@ -2,17 +2,25 @@
   <footer>
     <div class="footer-section">
       <div class="footer-logo">
-        <img src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">
+        <img src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="Logo ToDo App">
       </div>
       <div class="footer-separador"></div>
       <div class="footer-text">
-        <p>Ironhack 2022</p>
+        <div class="footer-logo">
+          <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/84/original/logo-ironhack-blue.png" alt="Logo Ironhack">
+        </div>
+        <p>Ironhack {{ year }}</p>
       </div>
     </div>
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import moment from 'moment'
+
+const year = moment().format('YYYY')
+
+</script>
 
 <style scoped>
 
@@ -32,6 +40,17 @@
 
 .footer-text{
   color: #303134;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer-text p{
+  margin-left: 10px;
+}
+
+.footer-text .footer-logo{
+  margin-right: 10px;
 }
 
 </style>

@@ -29,6 +29,7 @@ import TaskItem from '../components/TaskItem.vue'
 const addNewTask = useTaskStore();
 
 // onMounted(() => addNewTask.fetchTasks());
+
 // async created(){
 //   addNewTask.tasks = await addNewTask.fetchTasks();
 // };
@@ -39,19 +40,20 @@ addNewTask.fetchTasks();
 
 async function setNewTask(task){
   await addNewTask.addTask(task.name, task.description);
+  addNewTask.fetchTasks();
 };
 
+
+
 async function toggleReminder(task){
-  // addNewTask.tasks = addNewTask.tasks.map((task) => 
-  // task.user_id === id ? {...task, is_complete: !task.is_complete} : task
-  // );
-  // await addNewTask.toggleTask();
-  console.log(task);
+  await addNewTask.toggleTask(task.is_complete, task.id);
+  addNewTask.fetchTasks();
 
 }
 
 async function deleteTaskArr(task){
-  // await addNewTask.deleteTask();
+  await addNewTask.deleteTask(task.id);
+  addNewTask.fetchTasks();
 }
 
 </script>
