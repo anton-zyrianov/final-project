@@ -8,11 +8,11 @@
 
       <div class="todo-container">
         <div class="todo-title">
-          <h3>{{ task.title }}</h3>
+          <h3 :class="task.is_complete ? 'done' : ''">{{ task.title }}</h3>
         </div>
 
         <div class="todo-description">
-          <p>{{ task.description }}</p>
+          <p :class="task.is_complete ? 'done' : ''">{{ task.description }}</p>
         </div>
 
         <div class="todo-buttons">
@@ -86,10 +86,11 @@ const deleteTask = (id) => {
   const taskToDelete = props.tasks.filter((task) => task.id === id);
   emit('delete-task', taskToDelete[0]);
 
+
 };
 
 const changeNameActiveValue = () => {
-  changeNameActive.value = !changeNameActive.value;
+    changeNameActive.value = !changeNameActive.value;
 };
 
 const changeNameTask = (id, index) => {
@@ -97,9 +98,11 @@ const changeNameTask = (id, index) => {
   const taskToEdit = props.tasks.map((task) => 
   task.id === id ? {...task, title: name.value} : task
   );
-
   emit('change-name', taskToEdit[index]);
+
   name.value = "";
+  changeNameActive.value = false;
+
 };
 
 </script>
@@ -111,6 +114,8 @@ const changeNameTask = (id, index) => {
   height: 100%;
   position: relative;
   width: 33.333%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .todo-image{
@@ -132,6 +137,7 @@ const changeNameTask = (id, index) => {
   margin-right: 10px;
   margin-bottom: 40px;
   color: #303134;
+  border-radius: 10px;
 }
 
 .todo-change-state{
@@ -175,7 +181,7 @@ const changeNameTask = (id, index) => {
 .container{
   max-width: 1100px;
   margin: auto;
-    display: flex;
+  display: flex;
   flex-wrap: wrap;
 }
 
@@ -253,11 +259,21 @@ input[type="text" i]{
   transition: all 0.2s ease;
 }
 
+.done{
+  text-decoration:line-through;
+}
+
 @media only screen and (max-width: 747px){
   .container{
     margin-left: 30px;
     margin-right: 30px;
 
+  }
+
+  .todo-item{
+    width: 50%;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 

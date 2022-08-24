@@ -15,7 +15,21 @@
             <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
           </li>
         </ul>
+
+        <button @click="changeClickBurger" :class="[clickBurger ? 'active' : '', 'button-menu']" id="button-menu">
+          <span class="span-uno"></span>
+          <span class="span-dos"></span>
+          <span class="span-tres"></span>
+        </button>
+        <nav :class="[clickBurger ? 'active' : '','nav-burger']" id="nav-burger">
+        <ul class="log-out-elements-mobile">
+          <li>
+            <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
+          </li>
+        </ul>
+        </nav>
       </div>
+
     </div>
   </nav>
 </template>
@@ -25,6 +39,7 @@
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
+import { ref } from 'vue';
 
 //constant to save a variable that will hold the use router method
 const route = "/";
@@ -58,21 +73,24 @@ const signOut = async () => {
     }, 5000);
   }
 };
+
+const clickBurger = ref(false);
+
+const changeClickBurger = () => {
+  clickBurger.value = !clickBurger.value;
+};
 </script>
 
 <style scoped>
 
-nav{
-  max-width: 1100px;
-}
-
 .nav-bar{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: #303134;
   background-color: #fff;
+  margin: 0 10%;
 }
 
 .log-out-elements{
@@ -112,6 +130,90 @@ nav{
 
 .navbar-img{
   width: 50px;
+}
+
+.log-out-elements-mobile{
+  display: none;
+}
+
+.button-menu{
+  display: none;
+}
+
+@media only screen and (max-width: 747px){
+  .hello{
+    display: none;
+  }
+
+  .log-out-elements{
+    display: none;
+  }
+
+  .nav-bar{
+    margin: 0 50px;
+    justify-content: space-between;
+  }
+
+  .log-out-elements-mobile{
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    margin-right: 50px;
+  }
+  
+  .button-menu{
+    display: block;
+  }
+
+  .nav-burger{
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    margin-top: 40px;
+    z-index: 50;
+    transition: all 0.3s ease 0s;
+  }
+
+  .nav-burger.active{
+    top: 14px;
+  }
+
+  .button-menu {
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    background: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-menu span{
+    width: 30px;
+    height: 4px;
+    background-color: #44A8EE;
+    margin-bottom: 5px;
+    position: relative;
+    transition: all 0.3s ease 0s;
+  }
+
+  .button-menu.active .span-uno{
+    transform: rotate(45deg);
+    top: 5px;
+  }
+
+  .button-menu.active .span-dos{
+    display: none;
+  }
+  
+  .button-menu.active .span-tres{
+    transform: rotate(-45deg);
+    bottom: 5px;
+  }
+
 }
 
 </style>

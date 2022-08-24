@@ -59,6 +59,7 @@ async function changeName(task){
   addNewTask.fetchTasks();
 }
 
+
 </script>
 
 <style scoped>
