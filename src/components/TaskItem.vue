@@ -1,6 +1,10 @@
 <template>
   <div class="container">
 
+    <!-- <div class="no-task-container" v-show="tasks.lenght === 0">
+      <p class="no-task-text">Woohoo, nothing left to do!</p>
+    </div> -->
+
     <div class="todo-item" v-for="(task, index) in tasks" :key="index">
       <div class="todo-image">
         <i class="task fas fa-tasks fa-lg"></i>
@@ -19,7 +23,7 @@
           <div :class="task.is_complete ? 'todo-change-state' : 'todo-change-state-not'" @click="toggleReminderTask(task.id, index)"></div>
 
           <div class="todo-change-name">
-            <i class="change fas fa-edit fa-lg" @click="changeNameActiveValue"></i>
+            <i class="change fas fa-edit fa-lg" @click="changeNameActiveValue(task.id)"></i>
           </div>
 
           <div class="todo-delete">
@@ -27,7 +31,7 @@
           </div>
         </div>
 
-        <div class="changeName" v-if="changeNameActive">
+        <div class="changeName" v-if="changeNameActive && idRef === task.id">
           <!-- @click="changeName(task.id, index)" -->
           <div class="add-task-form">
             <div class="input-field">
@@ -66,6 +70,7 @@ const description = ref('');
 //variable que nos guarda un valor booleano para poder aplciar onClick y con la funcion changeNameActiveValue poder
 //cambiar su valor y abrir el formulario donde vamos a cambiar los valores
 const changeNameActive = ref(false);
+const idRef = ref(null);
 
 //pasamos index a la funcion, porque taskToToggle es un array de objetos y queremos obtener el objeto en el que hemos alterado el valor is_complete
 //para eso pasamos el index del v-for para obtener la posision de este objeto en el array y emitirlo como custom event a la home
@@ -89,7 +94,8 @@ const deleteTask = (id) => {
 
 };
 
-const changeNameActiveValue = () => {
+const changeNameActiveValue = (id) => {
+  idRef.value = id;
     changeNameActive.value = !changeNameActive.value;
 };
 
@@ -109,13 +115,17 @@ const changeNameTask = (id, index) => {
 
 <style scoped>
 
+/* .container{
+  margin-left: 100px;
+  margin-right: 100px;
+} */
+
 .todo-item{
   margin-top: 40px;
   height: 100%;
   position: relative;
   width: 33.333%;
-  margin-left: 20px;
-  margin-right: 20px;
+
 }
 
 .todo-image{
@@ -125,7 +135,7 @@ const changeNameTask = (id, index) => {
   border-radius: 50%;
   background-color: #44A8EE;
   left: 50%;
-  top: -15%;
+  top: -35px;
   transform: translate(-50%, 0);
   border: 7px solid #fff;
 }
@@ -261,6 +271,11 @@ input[type="text" i]{
 
 .done{
   text-decoration:line-through;
+}
+
+.no-task-text{
+  color: #303134;
+  font-size: 25px;
 }
 
 @media only screen and (max-width: 747px){
