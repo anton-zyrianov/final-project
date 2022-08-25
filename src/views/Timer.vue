@@ -1,9 +1,8 @@
 <template>
-   
    <div class="wrapper">
       <Navbar />
 
-      <div class="content">
+      <div :class="played ? 'content-gradient' : 'content'">
 
          <div v-if="!played" class="timer-form">
             <input class="input-field-input" type="number" placeholder="Minutes" id="minutes" v-model="minutes" required>
@@ -61,8 +60,8 @@ const timer = () => {
 };
 
 const restart = () => {
-   minutes.value = 0;
-   seconds.value = 0;
+   minutes.value = "";
+   seconds.value = "";
 
    played.value = false;
    alert.play();
@@ -80,6 +79,18 @@ const restart = () => {
    overflow: hidden;
    display: flex;
    flex-direction: column;
+}
+
+.content-gradient{
+   /* background-color: #F3F4F6; */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex: 1 1 auto;
+   background: linear-gradient(-45deg, #6D9DC5, #8AC6D0, #B8F3FF, #DAF0EE);
+   background-size: 400% 400%;
+   animation: gradient 10s ease infinite;
 }
 
 .content{
@@ -124,6 +135,18 @@ const restart = () => {
 .timer-display{
    font-size: 90px;
    color: #303134;
+}
+
+@keyframes gradient {
+   0% {
+      background-position: 0% 50%;
+   }
+   50% {
+      background-position: 100% 50%;
+   }
+   100% {
+      background-position: 0% 50%;
+   }
 }
 
 </style>

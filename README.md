@@ -49,10 +49,12 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 * Implementar menu hamburguesa para versiones moviles
 * Cuando el usuario clique en el boton de toggle y cambie el estado de la tarea a "Hecha", esta se tacha
 * Subir el proyecto a Vercel para que este disponible para todo el mundo
-* Comenzar con la parte del perfil de usuario ~~(opcional)~~
+* ~~Comenzar con la parte del perfil de usuario (opcional)~~
 
 ### 25 de agosto:
 * Repaso a la pagina y todas sus funcionalidades
 * Preparar el README con la descripcion del proyecto
-* Preparar la presentacion del proyecto
 * Implementar funcionalidad del Timer
+
+### 26 de agosto:
+* Preparar la presentacion del proyecto
