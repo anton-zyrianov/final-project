@@ -1,6 +1,6 @@
 # [](https://github.com/zantonz/final-project/blob/master/README.md)ToDo App
 
-![](https://todo-zantonz.vercel.app/)El enlace para acceder a la web: click
+[![](https://todo-zantonz.vercel.app/)Click para acceder a la web]
 
 Autor: Anton Zyrianov
 Fecha: 25/08/2022
