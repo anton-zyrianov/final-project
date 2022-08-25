@@ -2,6 +2,16 @@
    <div class="wrapper">
       <Navbar />
          <div :class="played ? 'content-gradient' : 'content'">
+
+            <div class="add-timer-title">
+               <h1>Add a new Timer</h1>
+            </div>
+
+            <div class="add-timer-description">
+               <p class="add-timer-text">Keep your time organized!</p>
+               <p class="add-timer-text">Today's Time is {{ time }}</p>
+            </div>
+
             <div v-if="!played" class="timer-form">
                <input class="input-field-input" type="number" placeholder="Minutes" id="minutes" v-model="minutes" required>
                <input class="input-field-input" type="number" placeholder="Seconds" id="seconds" v-model="seconds" required>
@@ -27,6 +37,9 @@ import Footer from "../components/Footer.vue"
 import buttonSong from "../assets/sounds/music.mp3"
 import alertSound from "../assets/sounds/alert.mp3"
 import { ref } from "vue"
+import moment from 'moment'
+
+const time = moment().format('LTS');
 
 const btnSong = new Audio(buttonSong);
 const alert = new Audio(alertSound);
@@ -148,6 +161,22 @@ const restart = () => {
    100% {
       background-position: 0% 50%;
    }
+}
+
+.add-timer-title h1{
+   font-size: 60px;
+   margin-top: 0;
+   padding-top: 30px;
+   color: #303134;
+}
+
+.add-timer-text{
+   font-weight: 700;
+   color: #303134;
+}
+
+.add-timer-text:last-child{
+   margin-bottom: 40px;
 }
 
 </style>
