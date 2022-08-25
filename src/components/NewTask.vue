@@ -140,6 +140,7 @@ const errorFunction = () => {
   color: #fff;
   font-weight: 700;
   font-size: 15px;
+  opacity: 0.8;
 }
 
 input[type="text" i]{

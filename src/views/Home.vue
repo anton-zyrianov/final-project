@@ -1,18 +1,20 @@
 <template>
-  <Nav />
+  <div class="wrapper">
+    <Nav />
 
-  <div class="background-body">
-    <NewTask 
-    @add-task="setNewTask"/>
-    <!-- <NewTask /> -->
-    <TaskItem :tasks="addNewTask.tasks"
-    @toggle-reminder="toggleReminder" 
-    @delete-task="deleteTaskArr"
-    @change-name="changeName" />
+    <div class="content">
+      <NewTask 
+      @add-task="setNewTask"/>
+      <!-- <NewTask /> -->
+      <TaskItem :tasks="addNewTask.tasks"
+      @toggle-reminder="toggleReminder" 
+      @delete-task="deleteTaskArr"
+      @change-name="changeName" />
+      
+    </div>
     
+    <Footer />
   </div>
-  
-  <Footer />
 </template>
 
 <script setup>
@@ -64,8 +66,16 @@ async function changeName(task){
 
 <style scoped>
 
-.background-body{
+.wrapper{
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
   background-color: #F3F4F6;
+  flex: 1 1 auto;
 }
 
 </style>

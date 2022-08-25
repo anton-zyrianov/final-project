@@ -1,13 +1,14 @@
 <template>
   <div class="container">
 
-    <!-- <div class="no-task-container" v-show="tasks.lenght === 0">
-      <p class="no-task-text">Woohoo, nothing left to do!</p>
+    <!-- <div class="no-task-container" v-if="tasks.lenght === 0">
+      <p >Woohoo, nothing left to do!</p>
     </div> -->
 
     <div class="todo-item" v-for="(task, index) in tasks" :key="index">
-      <div class="todo-image">
-        <i class="task fas fa-tasks fa-lg"></i>
+      <div :class="task.is_complete ? 'todo-image' : 'todo-image-not'">
+        <i v-if="task.is_complete" class="task fas fa-check fa-lg"></i>
+        <i v-if="!task.is_complete" class="task fas fa-times fa-lg"></i>
       </div>
 
       <div class="todo-container">
@@ -23,7 +24,7 @@
           <div :class="task.is_complete ? 'todo-change-state' : 'todo-change-state-not'" @click="toggleReminderTask(task.id, index)"></div>
 
           <div class="todo-change-name">
-            <i class="change fas fa-edit fa-lg" @click="changeNameActiveValue(task.id)"></i>
+            <i class="change fas fa-edit fa-lg" @click="changeNameActiveValue(task)"></i>
           </div>
 
           <div class="todo-delete">
@@ -94,9 +95,11 @@ const deleteTask = (id) => {
 
 };
 
-const changeNameActiveValue = (id) => {
-  idRef.value = id;
-    changeNameActive.value = !changeNameActive.value;
+const changeNameActiveValue = (task) => {
+  idRef.value = task.id;
+  changeNameActive.value = !changeNameActive.value;
+  name.value = task.title;
+
 };
 
 const changeNameTask = (id, index) => {
@@ -116,8 +119,7 @@ const changeNameTask = (id, index) => {
 <style scoped>
 
 /* .container{
-  margin-left: 100px;
-  margin-right: 100px;
+  display: flex;
 } */
 
 .todo-item{
@@ -125,6 +127,8 @@ const changeNameTask = (id, index) => {
   height: 100%;
   position: relative;
   width: 33.333%;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -133,11 +137,25 @@ const changeNameTask = (id, index) => {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #44A8EE;
+  background-color: #8fbc91;
   left: 50%;
   top: -35px;
   transform: translate(-50%, 0);
   border: 7px solid #fff;
+  opacity: 0.7;
+}
+
+.todo-image-not{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fe2e2e;
+  left: 50%;
+  top: -35px;
+  transform: translate(-50%, 0);
+  border: 7px solid #fff;
+  opacity: 0.7;
 }
 
 .todo-container{
@@ -159,7 +177,7 @@ const changeNameTask = (id, index) => {
 .todo-change-state-not{
   width: 40px;
   height: 40px;
-  background-color: #fe2e2e;
+  background-color: #EF6969;
 }
 
 .todo-change-name{
@@ -182,6 +200,10 @@ const changeNameTask = (id, index) => {
 
 .todo-title{
   margin-bottom: 30px;
+}
+
+.todo-title h3{
+  word-break: break-all;
 }
 
 .todo-description{
@@ -287,6 +309,14 @@ input[type="text" i]{
 
   .todo-item{
     width: 50%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 540px){
+  .todo-item{
+    width: 100%;
     margin-left: 0px;
     margin-right: 0px;
   }

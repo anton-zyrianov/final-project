@@ -6,11 +6,23 @@
         <img class="navbar-img" src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">
       </router-link>
 
+      <ul class="log-out-elements navbar">
+          <li>
+            <router-link to="/">Task Manager</router-link>
+          </li>
+
+          <li>
+            <router-link to="/timer">Timer</router-link>
+          </li>
+      </ul>
+
       <div class="log-out">
         <ul class="log-out-elements">
-          <li class="hello">
+
+          <li class="log-out-welcome">
             <p>Welcome <span class="usuario-name">{{emailName[0]}}</span></p>
           </li>
+
           <li>
             <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
           </li>
@@ -22,7 +34,15 @@
           <span class="span-tres"></span>
         </button>
         <nav :class="[clickBurger ? 'active' : '','nav-burger']" id="nav-burger">
-        <ul class="log-out-elements-mobile">
+        <ul class="log-out-elements-mobile navbar">
+          <li>
+            <router-link to="/">Task Manager</router-link>
+          </li>
+
+          <li>
+            <router-link to="/timer">Timer</router-link>
+          </li>
+
           <li>
             <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
           </li>
@@ -83,6 +103,11 @@ const changeClickBurger = () => {
 
 <style scoped>
 
+.navbar li{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
 .nav-bar{
   display: flex;
   flex-direction: row;
@@ -115,6 +140,7 @@ const changeClickBurger = () => {
   border: none;
   margin-left: 50px;
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .button:hover {
@@ -140,8 +166,28 @@ const changeClickBurger = () => {
   display: none;
 }
 
+.navbar{
+  position: relative;
+}
+
+.navbar a{
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #44A8EE;
+  text-decoration: none;
+  opacity: 0.6;
+  font-weight: 600;
+  align-items: center;
+}
+
+.navbar a:hover{
+  color: #195ABD;
+  opacity: 0.9;
+}
+
 @media only screen and (max-width: 747px){
-  .hello{
+  .log-out-welcome{
     display: none;
   }
 
@@ -157,7 +203,7 @@ const changeClickBurger = () => {
   .log-out-elements-mobile{
     display: flex;
     list-style: none;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-right: 50px;
   }
   
