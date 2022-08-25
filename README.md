@@ -1,93 +1,58 @@
-# final-boiler-plate
+# [](https://github.com/zantonz/final-project/blob/master/README.md)ToDo App
 
-This template should help get you started developing the final project running on Vue 3 with the composition API, Pinia as a state management tool, vue router, vite and lastly Supabase running on the backend.
+El enlace para acceder a la web: [](https://todo-zantonz.vercel.app/)click
 
-This is meant as an advanced starter ready to plug in your supabase variables and run directly on a local server already connected to your Supabase instance. 
+Autor: Anton Zyrianov
+Fecha: 25/08/2022
 
-You are given some functions to see how the supabase ecosystem works with Vue and more specifically, pinia as a state management tool.
+## Descripcion
 
-You can add any CSS framework of your liking like tailwindCSS, Bootstrap, MaterialUI or many of the cool libaries that exist in the web. 
+![Pagina home](https://imgur.com/a/PXTlOIw)
 
-## Important
-This app is not setUp to be deployed to a production environment like vercel or netlify. 
+Se trata del proyecto final realizado durante el bootcamp de Front End Development en el Ironhack que consiste en una pagina web que te permite gestionar tus tareas.
 
-Friday on August 19 we will look at how can we deploy this app to Vercels ecosystem.
+Es una aplicacion creada con Vue.js que permite a usuarios crear una cuenta, añadir tareas a completar, editarlas, marcarlas como completadas y finalmente borrarlas. Nuestra pagina web esta vinculada a una base de datos, donde estaremos almacenando todos los datos de usuarios y las tareas. En este caso, para gestionarlo utilizaremos Supabase, que nos ofrece un subconjunto de funcionalidades de Back End que nos permite gestionarlo como un servicio.
 
+__El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.js obtenidos durante el curos y ademas poder conectarlo a una base de datos externa y gestionarla.
 
-## Project Setup
+## Tecnologias empleadas:
 
-```sh
-npm install
-```
+* __Client:__ Vue.js y Vite
+* __Router:__ Vue Router
+* __Store:__ Pinia y Pinia Persist para el Log In
+* __Database:__ Supabase
 
-## Set Up your Environment Variables from Supabase located at the root folder of the project
+## Seguimiento del proyecto:
 
-```sh
-VITE_SUPABASE_URL
-VITE_SUPABASE_ANON_KEY 
-```
-#### Once you have added your environment variables, head to your .gitIgnore file located at the root folder and uncomment the .env file naming to avoid sharing any private access keys to your database
+### 18 agosto:
+* Implentar HTML y CSS del Sign Up y Sing In
 
-### Compile and Hot-Reload for Development
+### 19 agosto:
+* Implentar la logica para el Sign Up, Sign In y Sing Out
+* Implentar los componentes del Navbar y el Footer
+* Empezar con el diseño HTML y CSS del componente addTask
 
-```sh
-npm run dev
-```
+### 22 de agosto:
+* Implementar la funcionalidad de addTask y taskItem
+* Añadir el diseño HTML y CSS del componente taskItem
+* Hacer el fetch de las tareas de Supabase al cargar la pagina y cada vez que se ejecute alguna accion de cambio
 
-### Compile and Minify for Production
+### 23 de agosto:
+* Preparar la tienda task.js para poder conectar los botones con la base de datos
+* Añadir funcionalidad al boton toggle que permite cambiar el estado de la tarea
+* Añadir funcionalidad al boton de cambiar el nombre que permite al usuario cambiar el titulo de la tarea
+* Añadir funcionalidad al boton de borrar la tarea
+* Implemntar la funcionalidad de ocultar/mostrar contraseña a la hora de hacer Sign In
+* Adaptar el diseño a la version movil, en este caso solo hay solo media query que se activa a partir de 747px para abajo
 
-```sh
-npm run build
-```
+### 24 de agosto:
+* Implementar menu hamburguesa para versiones moviles
+* Cuando el usuario clique en el boton de toggle y cambie el estado de la tarea a "Hecha", esta se tacha
+* Subir el proyecto a Vercel para que este disponible para todo el mundo
+* Comenzar con la parte del perfil de usuario _(opcional)_
 
-### Good Music is always key!
-
-```sh
-Wu Tang Clan
-A tribe called quest
-Kendrick Lamar
-Outkast
-Dr. Dre
-N.W.A
-De La Soul 
-Ms. Lauryn Hill
-J. Cole 
-Guts
-Naughty By Nature
-People under the stairs
-Nujabes
-NAS
-KRS-One
-The Pharcyde
-Jurassic 5
-Gang starr
-Jay Z
-Mobb Depp
-Common
-Lil Supa
-```
-[Hip Hop Spotify Playlist](https://open.spotify.com/playlist/4vKftyhS1gQovakehVcq1u?si=a7a119382dfe40da)
-
-18 agosto:
-- implentar HTML y CSS del sign-up y sing-in
-
-19 agosto:
-- implentar la logica para sign-up, sign-in y sing out
-- implentar el navbar y el footer
-- empezar con el diseño HTML y CSS de addTask
-
-22 de agosto:
-- implementar la funcionalidad de addTask y TaskItem
-- añadir el diseño HTML y CSS de TaskItem
-- hacer el fetch de las task de supabase
-- !falta por arreglar que las task aparezcan sin actualizar la pagina
-
-23 de agosto:
-- preparar las tienda task para poder conectar los botones con la base de datos
-- añadir funcionalidad a los botones toggle - change name - delete de cada tarea
-- implemntado la funcionalidad de ocultar/mostrar contraseña en el sign in
-- hacer las media queries
-
-24 de agosto:
-- implementar manu hamburgues para versiones moviles
-- cuando la tarea esta hecha y el usuario clique en el toggle reminder, esta se tacha
+### 25 de agosto:
+* Repaso a la pagina y todas sus funcionalidades
+* Preparar el README con la descripcion del proyecto
+* Preparar la presentacion del proyecto
+* Continuar con la implementacion del perfil de usuario _(opcional)_
