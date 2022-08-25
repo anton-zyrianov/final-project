@@ -7,7 +7,7 @@ Fecha: 25/08/2022
 
 ## Descripcion
 
-![Pagina Home](https://i.imgur.com/a/PXTlOIw)
+![MentioMapp](https://pbs.twimg.com/profile_images/910620300252913666/ScaqKi-5_400x400.jpg)
 
 Se trata del proyecto final realizado durante el bootcamp de Front End Development en el Ironhack que consiste en una pagina web que te permite gestionar tus tareas.
 
