@@ -168,6 +168,7 @@ const signIn = async () => {
   padding: 10px 40px;
   width: 100%;
   border-radius: 5px;
+  box-shadow: 0 5px #8BC8F2;
 }
 
 a{

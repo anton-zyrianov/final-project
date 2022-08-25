@@ -141,6 +141,7 @@ const changeClickBurger = () => {
   margin-left: 50px;
   cursor: pointer;
   opacity: 0.8;
+  box-shadow: 0 5px #8BC8F2;
 }
 
 .button:hover {

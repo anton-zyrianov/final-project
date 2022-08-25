@@ -1,23 +1,21 @@
 <template>
    <div class="wrapper">
       <Navbar />
-
-      <div :class="played ? 'content-gradient' : 'content'">
-
-         <div v-if="!played" class="timer-form">
-            <input class="input-field-input" type="number" placeholder="Minutes" id="minutes" v-model="minutes" required>
-            <input class="input-field-input" type="number" placeholder="Seconds" id="seconds" v-model="seconds" required>
-         </div>
-
-         <div class="timer-container">
-            <div v-if="played" class="timer-counter">
-               <h1 class="timer-display">{{ minutes }} : {{ seconds }}</h1>
+         <div :class="played ? 'content-gradient' : 'content'">
+            <div v-if="!played" class="timer-form">
+               <input class="input-field-input" type="number" placeholder="Minutes" id="minutes" v-model="minutes" required>
+               <input class="input-field-input" type="number" placeholder="Seconds" id="seconds" v-model="seconds" required>
             </div>
-         </div>
 
-         <button v-if="!played" class="button" @click="timer">Start</button>
-         <button v-if="played" class="button" @click="restart">Restart</button>
-      </div>
+            <div class="timer-container">
+               <div v-if="played" class="timer-counter">
+                  <h1 class="timer-display">{{ minutes }} : {{ seconds }}</h1>
+               </div>
+            </div>
+
+            <button v-if="!played" class="button" @click="timer">Start</button>
+            <button v-if="played" class="button" @click="restart">Restart</button>
+         </div>
 
       <Footer />
    </div>
@@ -104,11 +102,13 @@ const restart = () => {
 
 .input-field-input{
    margin-bottom: 15px;
-   width: 100%;
+   width: 97%;
    padding-top: 10px;
    padding-bottom: 10px;
    border-radius: 5px;
    border: 1px;
+   display: block;
+   text-align: center;
 }
 
 .button{
@@ -123,6 +123,7 @@ const restart = () => {
    font-weight: 700;
    font-size: 15px;
    opacity: 0.8;
+   box-shadow: 0 5px #8BC8F2;
    
 }
 
