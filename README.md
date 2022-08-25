@@ -7,7 +7,7 @@ Fecha: 25/08/2022
 
 ## Descripcion
 
-![Pagina home](https://imgur.com/a/PXTlOIw)
+![Pagina Home](https://imgur.com/a/PXTlOIw)
 
 Se trata del proyecto final realizado durante el bootcamp de Front End Development en el Ironhack que consiste en una pagina web que te permite gestionar tus tareas.
 
