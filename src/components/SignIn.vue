@@ -107,7 +107,7 @@ const signInGoogle = async () => {
     // calls the user store and send the users info to backend to logIn
     await useUserStore().loginWithGoogle();
     // redirects user to the homeView
-    setTimeout(redirect.push({ path: "/" }), 4000);
+    // setTimeout(redirect.push({ path: "/" }), 5000);
   } catch (error) {
     // displays error message
     errorMsg.value = `Error: ${error.message}`;
@@ -123,7 +123,7 @@ const signInGithub = async () => {
     // calls the user store and send the users info to backend to logIn
     await useUserStore().loginWithGithub();
     // redirects user to the homeView
-    setTimeout(redirect.push({ path: "/" }), 4000);
+    // setTimeout(redirect.push({ path: "/" }), 5000);
   } catch (error) {
     // displays error message
     errorMsg.value = `Error: ${error.message}`;
