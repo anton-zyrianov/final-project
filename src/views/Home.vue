@@ -57,7 +57,7 @@ async function deleteTaskArr(task){
 };
 
 async function changeName(task){
-  await addNewTask.editTask(task.title, task.id);
+  await addNewTask.editTask(task.title, task.description, task.id);
   addNewTask.fetchTasks();
 }
 

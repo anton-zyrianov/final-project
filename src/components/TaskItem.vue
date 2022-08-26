@@ -39,9 +39,9 @@
               <input class="input-field-input" type="text" placeholder="Edit title" v-model="name">
             </div>
 
-            <!-- <div class="input-field">
+            <div class="input-field">
               <input class="input-field-input" type="text" placeholder="Edit description" v-model="description">
-            </div> -->
+            </div>
 
             <!-- <button @click.prevent="errorFunction" class="button">Add</button> -->
             <button @click="changeNameTask(task.id, index)" class="button">Change</button>
@@ -99,17 +99,19 @@ const changeNameActiveValue = (task) => {
   idRef.value = task.id;
   changeNameActive.value = !changeNameActive.value;
   name.value = task.title;
+  description.value = task.description;
 
 };
 
 const changeNameTask = (id, index) => {
 
   const taskToEdit = props.tasks.map((task) => 
-  task.id === id ? {...task, title: name.value} : task
+  task.id === id ? {...task, title: name.value, description: description.value} : task
   );
   emit('change-name', taskToEdit[index]);
 
   name.value = "";
+  description.value = "";
   changeNameActive.value = false;
 
 };
