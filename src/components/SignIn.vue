@@ -32,13 +32,13 @@
         </div>
       </form>
       <!-- <button @click="signInGoogle">Entrar con Google</button> -->
-      <div>
-        <p>or Log In With</p>
-        <div class="auth-icon" @click="signInGoogle">
+      <div class="auth-external">
+        <div class="auth-or">OR</div>
+        <div class="auth-icon google" @click="signInGoogle">
           <img src="https://freesvg.org/img/1534129544.png" alt="Google Icon">
         </div>
 
-        <div class="auth-icon" @click="signInGithub">
+        <div class="auth-icon github" @click="signInGithub">
           <img src="https://img.icons8.com/small/512/github.png" alt="Github Icon">
         </div>
       </div>
@@ -137,12 +137,53 @@ const signInGithub = async () => {
 
 <style scoped>
 
+.auth-external{
+  position:relative;
+  top: 25px;
+  left: 20%;
+  transform: translate(0, -50%);
+}
+
+.auth-or{
+  /* position: absolute; */
+  /* top: 180px;
+  left: 280px;  */
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
 .auth-icon{
   display: inline-block;
 }
 
+.google{
+  position: absolute;
+  top: 50%;
+  left: 70px;
+  transform: translate(-50%, -50%);
+}
+
+.github{
+  position: absolute;
+  top: 50%;
+  left: 110px;
+  transform: translate(-50%, -50%);
+}
+
 .auth-icon img{
   max-width: 30px;
+  opacity: 0.5
+}
+
+.auth-icon img:hover{
+  max-width: 30px;
+  opacity: 1;
 }
 
 .container{
