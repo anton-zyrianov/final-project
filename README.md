@@ -58,3 +58,6 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 
 ### 26 de agosto:
 * Preparar la presentacion del proyecto
+* Añadir animaciones
+* Añadir LogIn con plataformas extternas como Google y GitHub
+* Actualizar el tiempo actual constantemente en la pestaña del timer
