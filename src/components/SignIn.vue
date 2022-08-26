@@ -24,8 +24,8 @@
           <div class="form-input">
             <label class="input-field-label">Password</label>
             <input :type="passwordFieldType" class="input-field" placeholder="**********" id="password" v-model="password" required>
-            <i v-if="hidePassword" class="fas fa-eye fa-sm" @click="changePasswordFieldValue"></i>
-            <i v-if="!hidePassword" class="fas fa-eye-slash fa-sm" @click="changePasswordFieldValue"></i>
+            <i v-if="hidePassword" class="fas fa-eye-slash fa-sm" @click="changePasswordFieldValue"></i>
+            <i v-if="!hidePassword" class="fas fa-eye fa-sm" @click="changePasswordFieldValue"></i>
           </div>
           <button class="button">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
