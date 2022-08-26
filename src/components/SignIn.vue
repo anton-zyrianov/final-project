@@ -338,6 +338,27 @@ a{
     display: none;
   }
 
+  .auth-external{
+  position:relative;
+  top: 25px;
+  left: 50%;
+  transform: translate(0, -50%);
+}
+
+.auth-or{
+  /* position: absolute; */
+  /* top: 180px;
+  left: 280px;  */
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
 }
 
 </style>
