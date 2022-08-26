@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="nav-bar">
+    <div class="nav-bar animate__animated animate__bounceIn">
       <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
       <router-link to="/">
         <img class="navbar-img" src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">

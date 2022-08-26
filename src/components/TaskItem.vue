@@ -5,7 +5,7 @@
       <p >Woohoo, nothing left to do!</p>
     </div> -->
 
-    <div class="todo-item" v-for="(task, index) in tasks" :key="index">
+    <div class="todo-item animate__animated animate__fadeInRight" v-for="(task, index) in tasks" :key="index">
       <div :class="task.is_complete ? 'todo-image' : 'todo-image-not'">
         <i v-if="task.is_complete" class="task fas fa-check fa-lg"></i>
         <i v-if="!task.is_complete" class="task fas fa-times fa-lg"></i>
