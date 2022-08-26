@@ -9,7 +9,7 @@
 
             <div class="add-timer-description">
                <p class="add-timer-text">Keep your time organized!</p>
-               <p class="add-timer-text">Today's Time is {{ time }}</p>
+               <p class="add-timer-text">Today's Time is <span v-text="currentTime"></span></p>
             </div>
 
             <div v-if="!played" class="timer-form">
@@ -39,7 +39,22 @@ import alertSound from "../assets/sounds/alert.mp3"
 import { ref } from "vue"
 import moment from 'moment'
 
-const time = moment().format('LTS');
+
+
+// const where I can save the date
+
+const currentTime = ref("");
+
+//function to update the time
+
+const updateCurrentTime = () => {
+   currentTime.value = moment().format('LTS');
+};
+
+//call the function every second
+
+setInterval(updateCurrentTime, 1000);
+
 
 const btnSong = new Audio(buttonSong);
 const alert = new Audio(alertSound);
