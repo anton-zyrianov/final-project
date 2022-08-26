@@ -142,7 +142,6 @@ const changeNameTask = (id, index) => {
   top: -35px;
   transform: translate(-50%, 0);
   border: 7px solid #fff;
-  opacity: 0.7;
 }
 
 .todo-image-not{
@@ -150,12 +149,11 @@ const changeNameTask = (id, index) => {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #fe2e2e;
+  background-color: #EF6969;
   left: 50%;
   top: -35px;
   transform: translate(-50%, 0);
   border: 7px solid #fff;
-  opacity: 0.7;
 }
 
 .todo-container{
@@ -208,6 +206,10 @@ const changeNameTask = (id, index) => {
 
 .todo-description{
   margin-bottom: 30px;
+}
+
+.todo-description p{
+  word-break: break-all;
 }
 
 .container{
