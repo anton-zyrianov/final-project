@@ -64,7 +64,9 @@ const minutes = ref("");
 const seconds = ref("");
 
 const timer = () => {
+
    setInterval(() => {
+
    if(seconds.value > 0){
       btnSong.play();
       btnSong.loop = true;

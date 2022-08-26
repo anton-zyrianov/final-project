@@ -37,6 +37,20 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    async loginWithGoogle(){
+      const { user, session, error } = await supabase.auth.signIn({
+        // provider can be 'github', 'google', 'gitlab', and more
+        provider: 'google',
+      })
+    },
+
+    async loginWithGithub(){
+      const { user, session, error } = await supabase.auth.signIn({
+        // provider can be 'github', 'google', 'gitlab', and more
+        provider: 'github',
+      })
+    },
+
     async signOut(){
       const { error } = await supabase.auth.signOut();
       if (error) throw error;

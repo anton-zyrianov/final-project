@@ -28,8 +28,20 @@
           </div>
           <button class="button">Sign In</button>
           <p>Dont have an account? <PersonalRouter :route="route" :buttonText="buttonText" class="sign-up-link"/></p>
+          
         </div>
       </form>
+      <!-- <button @click="signInGoogle">Entrar con Google</button> -->
+      <div>
+        <p>or Log In With</p>
+        <div class="auth-icon" @click="signInGoogle">
+          <img src="https://freesvg.org/img/1534129544.png" alt="Google Icon">
+        </div>
+
+        <div class="auth-icon" @click="signInGithub">
+          <img src="https://img.icons8.com/small/512/github.png" alt="Github Icon">
+        </div>
+      </div>
     </div>
 
     <div class="image-side">
@@ -88,9 +100,50 @@ const signIn = async () => {
     }, 5000);
   }
 };
+
+const signInGoogle = async () => {
+  try {
+    // calls the user store and send the users info to backend to logIn
+    await useUserStore().loginWithGoogle();
+    // redirects user to the homeView
+    redirect.push({ path: "/" });
+  } catch (error) {
+    // displays error message
+    errorMsg.value = `Error: ${error.message}`;
+    // hides error message
+    setTimeout(() => {
+      errorMsg.value = null;
+    }, 5000);
+  }
+};
+
+const signInGithub = async () => {
+  try {
+    // calls the user store and send the users info to backend to logIn
+    await useUserStore().loginWithGithub();
+    // redirects user to the homeView
+    redirect.push({ path: "/" });
+  } catch (error) {
+    // displays error message
+    errorMsg.value = `Error: ${error.message}`;
+    // hides error message
+    setTimeout(() => {
+      errorMsg.value = null;
+    }, 5000);
+  }
+};
+
 </script>
 
 <style scoped>
+
+.auth-icon{
+  display: inline-block;
+}
+
+.auth-icon img{
+  max-width: 30px;
+}
 
 .container{
   display: flex;
