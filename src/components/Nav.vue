@@ -1,12 +1,12 @@
 <template>
   <nav>
-    <div class="nav-bar animate__animated animate__bounceIn">
+    <div class="nav-bar">
       <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
       <router-link to="/">
-        <img class="navbar-img" src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">
+        <img class="navbar-img animate__animated animate__bounceIn" src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">
       </router-link>
 
-      <ul class="log-out-elements navbar">
+      <ul class="log-out-elements navbar animate__animated animate__bounceIn">
           <li>
             <router-link to="/">Task Manager</router-link>
           </li>
@@ -17,7 +17,7 @@
       </ul>
 
       <div class="log-out">
-        <ul class="log-out-elements">
+        <ul class="log-out-elements animate__animated animate__bounceIn">
 
           <li class="log-out-welcome">
             <p>Welcome <span class="usuario-name">{{emailName[0]}}</span></p>
