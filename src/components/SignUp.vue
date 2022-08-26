@@ -62,7 +62,7 @@
         </div>
       </form>
 
-      <div v-show="errorMsg">{{errorMsg}}</div>
+      <div v-show="errorMsg" class="error-password">{{errorMsg}}</div>
     </div>
 
     <div class="image-side">
@@ -119,7 +119,7 @@ const signUp = async () => {
       redirect.push({ path: "/auth/login" });
     } catch (error) {
       // displays error message
-      errorMsg.value = error.message;
+      errorMsg.value = 'Password do not match';
       // hides error message
       setTimeout(() => {
         errorMsg.value = null;
@@ -215,6 +215,10 @@ a {
 /* damos el color al hover de los enlaces */
 .sign-up-link:hover {
   color: #195abd;
+}
+
+.error-password{
+  color: red;
 }
 
 @media only screen and (max-width: 747px){
