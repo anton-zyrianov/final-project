@@ -341,8 +341,7 @@ a{
   .auth-external{
   position:relative;
   top: 25px;
-  left: 50%;
-  transform: translate(0, -50%);
+  left: 40%;
 }
 
 .auth-or{
