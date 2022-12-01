@@ -23,13 +23,15 @@ export const useUserStore = defineStore("user", {
     },
 
     async signIn(email, password) {
-      const { user, error } = await supabase.auth.signIn({
-        email: email,
-        password: password,
-      },
-      {
-        shouldCreateUser: false,
-      });
+      const { user, error } = await supabase.auth.signIn(
+        {
+          email: email,
+          password: password,
+        },
+        {
+          shouldCreateUser: false,
+        }
+      );
       if (error) throw error;
       if (user) {
         this.user = user;
@@ -37,21 +39,21 @@ export const useUserStore = defineStore("user", {
       }
     },
 
-    async loginWithGoogle(){
+    async loginWithGoogle() {
       const { user, session, error } = await supabase.auth.signIn({
         // provider can be 'github', 'google', 'gitlab', and more
-        provider: 'google',
-      })
+        provider: "google",
+      });
     },
 
-    async loginWithGithub(){
+    async loginWithGithub() {
       const { user, session, error } = await supabase.auth.signIn({
         // provider can be 'github', 'google', 'gitlab', and more
-        provider: 'github',
-      })
+        provider: "github",
+      });
     },
 
-    async signOut(){
+    async signOut() {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
     },

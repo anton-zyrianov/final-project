@@ -3,10 +3,7 @@
     <div class="form-side">
       <div class="header">
         <a href="/auth/#" class="header-logo">
-          <img
-            src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8"
-            alt="Logo-ToDo-App"
-          />
+          <img src="../assets/img/logo-big.png" alt="Logo-ToDo-App" />
         </a>
         <div class="header-description">
           <h3 class="header-title">Register to ToDo App</h3>
@@ -62,12 +59,12 @@
         </div>
       </form>
 
-      <div v-show="errorMsg" class="error-password">{{errorMsg}}</div>
+      <div v-show="errorMsg" class="error-password">{{ errorMsg }}</div>
     </div>
 
     <div class="image-side">
       <img
-        src="https://tecnicasdeaprendizaje.net/wp-content/uploads/2020/03/debe-tomar-notas-escribiendo-o-escribiendo.jpg"
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         alt="Notes"
       />
     </div>
@@ -82,45 +79,45 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 
-// Route Variables
+//varibales de rutas
 const route = "/auth/login";
 const buttonText = "Sign In";
 
-// Input Fields
+//input fields
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
-// Error Message
+//mensaje del error
 const errorMsg = ref("");
 
-// Show hide password variable
+//mostrar/ocultar contraseña
 const passwordFieldType = computed(() =>
   hidePassword.value ? "password" : "text"
 );
 const hidePassword = ref(true);
 
-// Show hide confrimPassword variable
+//mostrar/ocultar del campo confirmar contraseña
 const confirmPasswordFieldType = computed(() =>
   hideConfirmPassword.value ? "password" : "text"
 );
 const hideConfirmPassword = ref(true);
 
-// Router to push user once SignedUp to Log In
+//router para empujar al usuario una vez hecho SignUp a SignIn
 const redirect = useRouter();
 
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const signUp = async () => {
   if (password.value === confirmPassword.value) {
     try {
-      // calls the user store and send the users info to backend to logIn
+      //llamamos la tienda user y enviamos informacion al backend para hacer signUp
       await useUserStore().signUp(email.value, password.value);
-      // redirects user to the homeView
+      //redirect al login
       redirect.push({ path: "/auth/login" });
     } catch (error) {
-      // displays error message
-      errorMsg.value = 'Password do not match';
-      // hides error message
+      //mostramos mensaje del error
+      errorMsg.value = "Password do not match";
+      //ocultamos el error a los 5 segundos
       setTimeout(() => {
         errorMsg.value = null;
       }, 5000);
@@ -175,10 +172,6 @@ const signUp = async () => {
   text-align: center;
 }
 
-.header img {
-  width: 150px;
-}
-
 .header-subtitle {
   color: #303134;
 }
@@ -203,7 +196,7 @@ const signUp = async () => {
   padding: 10px 40px;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 0 5px #8BC8F2;
+  box-shadow: 0 5px #8bc8f2;
 }
 
 a {
@@ -217,26 +210,26 @@ a {
   color: #195abd;
 }
 
-.error-password{
+.error-password {
   color: red;
 }
 
-@media only screen and (max-width: 747px){
-  .container{
+@media only screen and (max-width: 747px) {
+  .container {
     display: flex;
     align-items: flex-end;
-    background-image: url('https://tecnicasdeaprendizaje.net/wp-content/uploads/2020/03/debe-tomar-notas-escribiendo-o-escribiendo.jpg');
+    background-image: url("https://tecnicasdeaprendizaje.net/wp-content/uploads/2020/03/debe-tomar-notas-escribiendo-o-escribiendo.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 0% 0%;
     height: 100vh;
   }
 
-  .image-side{
+  .image-side {
     display: none;
   }
 
-  .form-side{
+  .form-side {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -244,27 +237,25 @@ a {
     border-radius: 90px 90px 0 0;
   }
 
-  .form-sign-in{
+  .form-sign-in {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
-  .form-side{
+  .form-side {
     margin: 0 auto;
   }
 
-  .header{
-    display: flex; 
+  .header {
+    display: flex;
     justify-content: center;
   }
 
-  .header-description{
+  .header-description {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-
 }
-
 </style>

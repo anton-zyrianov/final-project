@@ -3,53 +3,68 @@
     <div class="nav-bar">
       <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
       <router-link to="/">
-        <img class="navbar-img animate__animated animate__bounceIn" src="https://play-lh.googleusercontent.com/PH-2iORSfQs-iizoHzePXBaJCXml443pgoC14-lZESLFIp78A4SvxLKUVv1FyIQFtC8" alt="">
+        <img
+          class="navbar-img animate__animated animate__bounceIn"
+          src="../assets/img/logo-small.png"
+          alt="Logo"
+        />
       </router-link>
 
       <ul class="log-out-elements navbar animate__animated animate__bounceIn">
-          <li>
-            <router-link to="/">Task Manager</router-link>
-          </li>
+        <li>
+          <router-link to="/">Task Manager</router-link>
+        </li>
 
-          <li>
-            <router-link to="/timer">Timer</router-link>
-          </li>
+        <li>
+          <router-link to="/timer">Timer</router-link>
+        </li>
       </ul>
 
       <div class="log-out">
         <ul class="log-out-elements animate__animated animate__bounceIn">
-
           <li class="log-out-welcome">
-            <p>Welcome <span class="usuario-name">{{emailName[0]}}</span></p>
+            <p>
+              Welcome <span class="usuario-name">{{ emailName[0] }}</span>
+            </p>
           </li>
 
           <li>
-            <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
+            <button @click="signOut" class="button">
+              <span class="button-bold">Log Out</span>
+            </button>
           </li>
         </ul>
 
-        <button @click="changeClickBurger" :class="[clickBurger ? 'active' : '', 'button-menu']" id="button-menu">
+        <button
+          @click="changeClickBurger"
+          :class="[clickBurger ? 'active' : '', 'button-menu']"
+          id="button-menu"
+        >
           <span class="span-uno"></span>
           <span class="span-dos"></span>
           <span class="span-tres"></span>
         </button>
-        <nav :class="[clickBurger ? 'active' : '','nav-burger']" id="nav-burger">
-        <ul class="log-out-elements-mobile navbar">
-          <li>
-            <router-link to="/">Task Manager</router-link>
-          </li>
+        <nav
+          :class="[clickBurger ? 'active' : '', 'nav-burger']"
+          id="nav-burger"
+        >
+          <ul class="log-out-elements-mobile navbar">
+            <li>
+              <router-link to="/">Task Manager</router-link>
+            </li>
 
-          <li>
-            <router-link to="/timer">Timer</router-link>
-          </li>
+            <li>
+              <router-link to="/timer">Timer</router-link>
+            </li>
 
-          <li>
-            <button @click="signOut" class="button"><span class="button-bold">Log Out</span></button>
-          </li>
-        </ul>
+            <li>
+              <button @click="signOut" class="button">
+                <span class="button-bold">Log Out</span>
+              </button>
+            </li>
+          </ul>
         </nav>
       </div>
-
     </div>
   </nav>
 </template>
@@ -59,35 +74,33 @@
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
-import { ref } from 'vue';
+import { ref } from "vue";
 
-//constant to save a variable that will hold the use router method
 const route = "/";
 const buttonText = "Todo app";
 
-// constant to save a variable that will get the user from store with a computed function imported from vue
-// const getUser = computed(() => useUserStore().user);
+//constante para guardar a los usuario desde la tienda
 const getUser = useUserStore().user;
 
-// constant that calls user email from the useUSerStore
+//constante que llama user email desde useUserStore
 const userEmail = getUser.email;
 
-// constant that saves the user email and cleans out the @client from the user
-const emailName = userEmail.split('@');
+//constante que guarda el email limpia @client del usuario
+const emailName = userEmail.split("@");
 
-// async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
+//funcion asicnrona que llama metodo signOut desde la tienda useUserStore y empuja al usuario hacia Auth view
 const redirect = useRouter();
 
 const signOut = async () => {
-  try{
-    // calls the user store and send the users info to backend to signOut
+  try {
+    //llamamos la tienda y enviamos al usuario al backendo para el signOut
     await useUserStore().signOut();
-    // redirects user to the homeView
+    //redirect del usuario al Auth view
     redirect.push({ path: "/auth/login" });
   } catch (error) {
-    // displays error message
+    //mostramos el error message
     errorMsg.value = `Error: ${error.message}`;
-    // hides error message
+    //ocultamos el errror
     setTimeout(() => {
       errorMsg.value = null;
     }, 5000);
@@ -96,19 +109,19 @@ const signOut = async () => {
 
 const clickBurger = ref(false);
 
+//cambiamos el valor de la variable para gestionar burger menu
 const changeClickBurger = () => {
   clickBurger.value = !clickBurger.value;
 };
 </script>
 
 <style scoped>
-
-.navbar li{
+.navbar li {
   margin-left: 50px;
   margin-right: 50px;
 }
 
-.nav-bar{
+.nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -118,30 +131,30 @@ const changeClickBurger = () => {
   margin: 0 10%;
 }
 
-.log-out-elements{
+.log-out-elements {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.usuario-name{
+.usuario-name {
   font-weight: 500;
 }
 
-.log-out-elements{
+.log-out-elements {
   list-style: none;
 }
 
-.button{
-  background: #44A8EE;
+.button {
+  background: #44a8ee;
   padding: 10px;
   border-radius: 8px;
   border: none;
   margin-left: 50px;
   cursor: pointer;
   opacity: 0.8;
-  box-shadow: 0 5px #8BC8F2;
+  box-shadow: 0 5px #8bc8f2;
 }
 
 .button:hover {
@@ -150,69 +163,69 @@ const changeClickBurger = () => {
   transition: all 0.2s ease;
 }
 
-.button-bold{
+.button-bold {
   color: #fff;
   font-weight: 700;
 }
 
-.navbar-img{
+.navbar-img {
   width: 50px;
 }
 
-.log-out-elements-mobile{
+.log-out-elements-mobile {
   display: none;
 }
 
-.button-menu{
+.button-menu {
   display: none;
 }
 
-.navbar{
+.navbar {
   position: relative;
 }
 
-.navbar a{
+.navbar a {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: #44A8EE;
+  color: #44a8ee;
   text-decoration: none;
   opacity: 0.6;
   font-weight: 600;
   align-items: center;
 }
 
-.navbar a:hover{
-  color: #195ABD;
+.navbar a:hover {
+  color: #195abd;
   opacity: 0.9;
 }
 
-@media only screen and (max-width: 747px){
-  .log-out-welcome{
+@media only screen and (max-width: 747px) {
+  .log-out-welcome {
     display: none;
   }
 
-  .log-out-elements{
+  .log-out-elements {
     display: none;
   }
 
-  .nav-bar{
+  .nav-bar {
     margin: 0 50px;
     justify-content: space-between;
   }
 
-  .log-out-elements-mobile{
+  .log-out-elements-mobile {
     display: flex;
     list-style: none;
     justify-content: space-between;
     margin-right: 50px;
   }
-  
-  .button-menu{
+
+  .button-menu {
     display: block;
   }
 
-  .nav-burger{
+  .nav-burger {
     background-color: #fff;
     position: absolute;
     left: 0;
@@ -223,7 +236,7 @@ const changeClickBurger = () => {
     transition: all 0.3s ease 0s;
   }
 
-  .nav-burger.active{
+  .nav-burger.active {
     top: 14px;
   }
 
@@ -238,29 +251,27 @@ const changeClickBurger = () => {
     justify-content: center;
   }
 
-  .button-menu span{
+  .button-menu span {
     width: 30px;
     height: 4px;
-    background-color: #44A8EE;
+    background-color: #44a8ee;
     margin-bottom: 5px;
     position: relative;
     transition: all 0.3s ease 0s;
   }
 
-  .button-menu.active .span-uno{
+  .button-menu.active .span-uno {
     transform: rotate(45deg);
     top: 5px;
   }
 
-  .button-menu.active .span-dos{
+  .button-menu.active .span-dos {
     display: none;
   }
-  
-  .button-menu.active .span-tres{
+
+  .button-menu.active .span-tres {
     transform: rotate(-45deg);
     bottom: 5px;
   }
-
 }
-
 </style>
