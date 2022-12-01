@@ -1,11 +1,11 @@
 # [](https://github.com/zantonz/final-project/blob/master/README.md)ToDo App
 
-[Click para acceder a la web](https://todo-zantonz.vercel.app/)
+[Click para acceder a la web](https://azyrianov-dev.vercel.app/)
 
 Autor: Anton Zyrianov
 Fecha: 12/10/2022
 
-![Pagina Home](https://i.postimg.cc/m2rV83dV/Captura-de-pantalla-2022-08-25-a-las-10-38-46.png)
+![Pagina Home](https://i.ibb.co/ct3btVf/Captura-de-pantalla-2022-12-01-a-las-21-30-32.png)
 
 
 ## Tecnologias empleadas:
