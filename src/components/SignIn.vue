@@ -11,8 +11,10 @@
         </div>
       </div>
 
+      <!-- mostramos el error si la variable errorMsg es true -->
       <p v-show="errorMsg" class="error-msg">{{ errorMsg }}</p>
 
+      <!-- form que corresponde a los dos inputs de email y password -->
       <form @submit.prevent="signIn" class="form-sign-in">
         <div class="form">
           <div class="form-logo"></div>
@@ -28,6 +30,10 @@
             />
           </div>
           <div class="form-input">
+            <!-- segun la variable hidepassword indicamos el tipo al input, si es true se muestra como password con asteriscos
+            y si es false, como texto 
+            ademas, en funcion de la misma variable mostramos un icono u otro que nos indica que la contraseña se esta mostrando
+            o no -->
             <label class="input-field-label">Password</label>
             <input
               :type="passwordFieldType"
@@ -86,10 +92,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
-import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-import { storeToRefs } from "pinia";
 
 //variables de rutas
 const route = "/auth/sign-up";

@@ -3,17 +3,20 @@
     <!-- <div class="no-task-container" v-if="tasks.lenght === 0">
       <p >Woohoo, nothing left to do!</p>
     </div> -->
-
+    <!-- recorremos todas las tareas dentro del task -->
     <div
       class="todo-item animate__animated animate__fadeInRight"
       v-for="(task, index) in tasks"
       :key="index"
     >
+      <!-- el tick o cruz que aparece en la parte de arriba de cada una de la tarea que cambia en funcion de si la tarea esta completada
+      o no, lo que cambia en funcion de la variable is_complete -->
       <div :class="task.is_complete ? 'todo-image' : 'todo-image-not'">
         <i v-if="task.is_complete" class="task fas fa-check fa-lg"></i>
         <i v-if="!task.is_complete" class="task fas fa-times fa-lg"></i>
       </div>
-
+      <!-- titulo y descripcion de cada tarea, ademas igual que en el caso anterior en funcion de is_complete tachamos los texto cuando
+      la tarea esta finalizada -->
       <div class="todo-container">
         <div class="todo-title">
           <h3 :class="task.is_complete ? 'done' : ''">{{ task.title }}</h3>
@@ -22,7 +25,7 @@
         <div class="todo-description">
           <p :class="task.is_complete ? 'done' : ''">{{ task.description }}</p>
         </div>
-
+        <!-- los 3 botones que nos permiten gestionar tareas -->
         <div class="todo-buttons">
           <div
             :class="
@@ -43,6 +46,10 @@
           </div>
         </div>
 
+        <!-- el problema que tenia aqui es que al cambiar el nombre y la descripcion a una tarea se cambiaban todas
+        para resolver esto se ha empleado otra verificacion en la que se utiliza variable idRef a la que en la funcion
+        changeNameActiveValue se asigna el id, entonces si el id asigando es igual al id de la tarea, es cuando cambiamos
+        los valores a esta unica tarea -->
         <div class="changeName" v-if="changeNameActive && idRef === task.id">
           <!-- @click="changeName(task.id, index)" -->
           <div class="add-task-form">

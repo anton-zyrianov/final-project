@@ -1,15 +1,20 @@
 import { defineStore } from "pinia";
 import { supabase } from "../supabase";
+
+// tienda user donde accedemos a supabase
+
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: null,
   }),
   actions: {
+    // hacemos el fetch de todos los usuarios creados
     async fetchUser() {
       const user = await supabase.auth.user();
       this.user = user;
     },
-
+    // funcion que corresponde al signup, signinm signout y login con otras redes sociales
+    // lo propociona la documntacion de supabase
     async signUp(email, password) {
       const { user, error } = await supabase.auth.signUp({
         email: email,

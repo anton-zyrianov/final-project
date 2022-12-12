@@ -34,7 +34,10 @@
             </button>
           </li>
         </ul>
-
+        <!-- burger menu donde el icono se ha hecho con 3 spans, y al clicar en el icono el span del medio desaparece
+        y se añade la animacion donde las dos rayas que quedan se ponen en cruz para representar el icono cerrar. 
+        cuando se ha hecho click en el icono se añade la clase active al nav-burger que coloca el menu con las opciones
+        en la posicion correspondiente-->
         <button
           @click="changeClickBurger"
           :class="[clickBurger ? 'active' : '', 'button-menu']"

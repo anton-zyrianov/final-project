@@ -11,6 +11,7 @@
         </div>
       </div>
 
+      <!-- form que corresponde a los campos de crear cuenta -->
       <form @submit.prevent="signUp" class="form-sign-in">
         <div class="form">
           <div class="form-logo"></div>
@@ -59,6 +60,7 @@
         </div>
       </form>
 
+      <!-- mostramos el error si la variable errorMsg es true -->
       <div v-show="errorMsg" class="error-password">{{ errorMsg }}</div>
     </div>
 
@@ -74,10 +76,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
-import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-import { storeToRefs } from "pinia";
 
 //varibales de rutas
 const route = "/auth/login";
@@ -90,18 +90,6 @@ const confirmPassword = ref("");
 
 //mensaje del error
 const errorMsg = ref("");
-
-//mostrar/ocultar contraseña
-const passwordFieldType = computed(() =>
-  hidePassword.value ? "password" : "text"
-);
-const hidePassword = ref(true);
-
-//mostrar/ocultar del campo confirmar contraseña
-const confirmPasswordFieldType = computed(() =>
-  hideConfirmPassword.value ? "password" : "text"
-);
-const hideConfirmPassword = ref(true);
 
 //router para empujar al usuario una vez hecho SignUp a SignIn
 const redirect = useRouter();

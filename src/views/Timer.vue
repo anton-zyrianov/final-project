@@ -32,8 +32,12 @@
         </div>
       </div>
 
-      <button v-if="!played" class="button" @click="timer">Start</button>
-      <button v-if="played" class="button" @click="stopTimer">Pause</button>
+      <button v-if="!played" class="button" @click="played = true">
+        Start
+      </button>
+      <button v-if="played" class="button" @click="played = false">
+        Pause
+      </button>
     </div>
 
     <Footer />
@@ -67,6 +71,14 @@ const played = ref(false);
 const minutes = ref(24);
 const seconds = ref(59);
 
+//paramos el contador cambiando el estado de la variable played
+const stopTimer = () => {
+  played.value = false;
+  alert.play();
+  btnSong.pause();
+  clearInterval(timer);
+};
+
 //timer que indica la cantidad de minutos y segundos correpsondientes a cada uno de los estados
 const setTimer = (type) => {
   if (type === "pomodoro") {
@@ -84,39 +96,28 @@ const setTimer = (type) => {
   }
 };
 
-//actualizamos el contados por medio de la funcion setInterval cada segundo actualizando los valores de minutos y segundos
+//actualizamos el contador por medio de la funcion setInterval cada segundo actualizando los valores de minutos y segundos
 const timer = () => {
-  played.value = true;
-  setInterval(() => {
-    if (!(seconds.value === 0 && minutes.value === 0) && played.value) {
-      btnSong.play();
-      btnSong.loop = true;
-      played.value = true;
-      seconds.value--;
-      if (seconds.value === 0 && minutes.value !== 0) {
-        minutes.value--;
-        seconds.value = 59;
-      }
-
-      if (minutes.value === 0 && seconds.value === 0) {
-        clearInterval(timer);
-        played.value = false;
-        btnSong.pause();
-        alert.play();
-        stopTimer();
-      }
+  if (!(seconds.value === 0 && minutes.value === 0) && played.value) {
+    btnSong.play();
+    btnSong.loop = true;
+    played.value = true;
+    seconds.value--;
+    if (seconds.value === 0 && minutes.value !== 0) {
+      minutes.value--;
+      seconds.value = 59;
     }
-  }, 1000);
+
+    if (minutes.value === 0 && seconds.value === 0) {
+      played.value = false;
+      btnSong.pause();
+      alert.play();
+      stopTimer();
+    }
+  }
 };
 
-//paramos el contador cambiando el estado ve la variable played
-const stopTimer = () => {
-  played.value = false;
-  alert.play();
-  btnSong.pause();
-
-  clearInterval(timer);
-};
+setInterval(timer, 1000);
 </script>
 
 <style scoped>
